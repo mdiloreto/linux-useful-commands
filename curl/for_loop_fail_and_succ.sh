@@ -1,0 +1,1 @@
+success=0; failure=0; for i in $(seq 100); do [ $(curl -s -o /dev/null -w "%{http_code}" -H "X-Return-Encrypted-Headers: request_and_response" https://test-deployment.tupperware.eu/ --connect-timeout 60) -ge 200 ] && success=$((success+1)) || failure=$((failure+1)); done; echo "Success: $success, Failure: $failure, Success Rate: $((success * 100 / 100))%"
